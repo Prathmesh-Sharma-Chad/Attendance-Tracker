@@ -8,11 +8,11 @@ void Adding_values();
 void SaveData();
 void LoadData();
 
-std::string Subjects[15] = { "DS Lecture", "DS Tut", "DS Lab", "CPI Lecture", "MATHS-III Lecture", "DE Lecture", "DE Tut", "DE Lab", "DOS Lecture",
+std::string Subjects[10] = { "DS Lecture", "DS Tut", "DS Lab", "CPI Lecture", "MATHS-III Lecture", "DE Lecture", "DE Tut", "DE Lab", "DOS Lecture",
                             "IT Lab", "MOP Lecture" };
 
-int total_attendance[15] = { 0 };
-int classes_held[15] = { 0 };
+int total_attendance[10] = { 0 };
+int classes_held[10] = { 0 };
 
 int main()
 {
@@ -60,87 +60,84 @@ void Adding_values()
         << "Your answer: \n";
     std::cin >> respo;
 
-    if (respo >= 1 && respo <= 11)
+    if (respo < 1 || respo > 11)
     {
-        int new_attended, new_held;
+        std::cout << "Invalid input";
+        return;
+    }
+    
+    int new_attended, new_held;
 
-        std::cout << "How many new classes have been held for " << Subjects[respo - 1] << " since last time?: ";
-        std::cin >> new_held;
+    std::cout << "How many new classes have been held for " << Subjects[respo - 1] << " since last time?: ";
+    std::cin >> new_held;
 
-        std::cout << "How many of these new classes did you attend?: ";
-        std::cin >> new_attended;
+    std::cout << "How many of these new classes did you attend?: ";
+    std::cin >> new_attended;
 
-        total_attendance[respo - 1] += new_attended;
-        classes_held[respo - 1] += new_held;
+    total_attendance[respo - 1] += new_attended;
+    classes_held[respo - 1] += new_held;
 
-        float percentage = (static_cast<float>(total_attendance[respo - 1]) / classes_held[respo - 1]) * 100;
+    float percentage = (static_cast<float>(total_attendance[respo - 1]) / classes_held[respo - 1]) * 100;
 
-        std::string state;
+    std::string state;
 
-        if (percentage == 100)
-        {
-            state = "Congrats you have full attendance";
-        }
-        else if (percentage <= 99 && percentage >= 80)
-        {
-            state = "You have a very good attendance percentage";
-        }
-        else if (percentage <= 79 && percentage >= 75)
-        {
-            state = "You made it through";
-        }
-        else if (percentage <= 74 && percentage >= 60)
-        {
-            state = "You can still make it";
-        }
-        else if (percentage <= 59 && percentage >= 40)
-        {
-            state = "A Medical is the only thing that can save you now";
-        }
-        else if (percentage <= 39)
-        {
-            state = "What were you doing the whole semester? only god can save you now";
-        }
-
-        std::cout << "Your attendance in " << Subjects[respo - 1] << " is: "
-            << std::fixed << std::setprecision(2) << percentage << "% - " << state << std::endl;
+    if (percentage == 100)
+    {
+        state = "Congrats you have full attendance.";
+    }
+    else if (percentage >= 80)
+    {
+        state = "You have a very good attendance percentage.";
+    }
+    else if (percentage >= 75)
+    {
+        state = "You made it through.";
+    }
+    else if (percentage >= 60)
+    {
+            state = "You can still make it.";
+    }
+    else if (percentage >= 40)
+    {
+        state = "A Medical is the only thing that can save you now.";
+    }
+    else if (percentage < 40)
+    {
+        state = "What were you doing the whole semester? only god can save you now.";
     }
     else
     {
-        std::cout << "Invalid input";
+        state = "There's no saving anymore. You can only contemplate your life decisions.";
     }
+
+    std::cout << "Your attendance in " << Subjects[respo - 1] << " is: "
+        << std::fixed << std::setprecision(2) << percentage << "% - " << state << std::endl;
 }
 
 void SaveData()
 {
     std::ofstream file("attendance_data.txt");
-    if (file.is_open())
-    {
-        for (int i = 0; i < 11; i++)
-        {
-            file << total_attendance[i] << " " << classes_held[i] << "\n";
-        }
-        file.close();
-    }
-    else
+    if (!file.is_open())
     {
         std::cout << "Unable to open file for saving data.\n";
     }
+    for (int i = 0; i < 11; i++)
+    {
+        file << total_attendance[i] << " " << classes_held[i] << "\n";
+    }
+    file.close();
 }
 
 void LoadData()
 {
     std::ifstream file("attendance_data.txt");
-    if (file.is_open())
-    {
-        for (int i = 0; i < 11; i++)
-        {
-            file >> total_attendance[i] >> classes_held[i];
-        }
-        file.close();
-    }
-    else
+    if (!file.is_open())
     {
         std::cout << "No previous data found, starting fresh.\n";
     }
+    for (int i = 0; i < 11; i++)
+    {
+        file >> total_attendance[i] >> classes_held[i];
+    }
+    file.close();
 }
