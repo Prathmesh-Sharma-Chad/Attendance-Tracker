@@ -1,7 +1,11 @@
 Thank you for using this no brainer project which i made for no reason, other than that i wanted to make it
 <br>
 <br>
-You can copy the code in ""Main.cpp" or copy the repo to any of the text editor which can compile C++ and run it
+You can download the exe file and run it, and thats it.
+<br>
+i'll be adding customizing subjects in the future updates.
+<br>
+for now if you want to you can also clone the repo or copy the Main.cpp file and edit the subjects to your liking
 <br>
 Your feedback and suggestions are much appreciated
 <br>
