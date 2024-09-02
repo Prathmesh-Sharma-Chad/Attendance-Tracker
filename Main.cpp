@@ -8,11 +8,11 @@ void Adding_values();
 void SaveData();
 void LoadData();
 
-std::string Subjects[15] = { "DS Lecture", "DS Tut", "DS Lab", "CPI Lecture", "MATHS-III Lecture", "DE Lecture", "DE Tut", "DE Lab", "DOS Lecture",
-                            "IT Lab", "MOP Lecture" };
+std::string Subjects[15] = {"DS Lecture", "DS Tut", "DS Lab", "CPI Lecture", "MATHS-III Lecture", "DE Lecture", "DE Tut", "DE Lab", "DOS Lecture",
+                            "IT Lab", "MOP Lecture"};
 
-int total_attendance[15] = { 0 };
-int classes_held[15] = { 0 };
+int total_attendance[15] = {0};
+int classes_held[15] = {0};
 
 int main()
 {
@@ -25,6 +25,12 @@ int main()
     SaveData();
 
     std::cout << "\nMade by an ordinary college student who is always detained :)\n";
+
+    std::cout << "Press Enter To Exit";
+
+    std::cin.ignore();
+    
+    std::cin.get();
 
     return 0;
 }
@@ -46,18 +52,18 @@ void Adding_values()
 {
     int respo;
     std::cout << "For which subject would you like to add values for?\n"
-        << "DS lecture(1)\n"
-        << "DS TUT(2)\n"
-        << "DS LAB(3)\n"
-        << "CPI lecture(4)\n"
-        << "Maths-III lecture(5)\n"
-        << "DE LECTURE(6)\n"
-        << "DE TUT(7)\n"
-        << "DE LAB(8)\n"
-        << "DOS lecture(9)\n"
-        << "IT lab(10)\n"
-        << "MOP lecture(11)\n"
-        << "Your answer: \n";
+              << "DS lecture(1)\n"
+              << "DS TUT(2)\n"
+              << "DS LAB(3)\n"
+              << "CPI lecture(4)\n"
+              << "Maths-III lecture(5)\n"
+              << "DE LECTURE(6)\n"
+              << "DE TUT(7)\n"
+              << "DE LAB(8)\n"
+              << "DOS lecture(9)\n"
+              << "IT lab(10)\n"
+              << "MOP lecture(11)\n"
+              << "Your answer: \n";
     std::cin >> respo;
 
     if (respo >= 1 && respo <= 11)
@@ -103,7 +109,7 @@ void Adding_values()
         }
 
         std::cout << "Your attendance in " << Subjects[respo - 1] << " is: "
-            << std::fixed << std::setprecision(2) << percentage << "% - " << state << std::endl;
+                  << std::fixed << std::setprecision(2) << percentage << "% - " << state << std::endl;
     }
     else
     {
