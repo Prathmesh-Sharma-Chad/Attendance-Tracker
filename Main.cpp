@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cctype>
-#include <fstream> // Required for file I/O
+#include <fstream>
 
 int Input();
 void Adding_values();
@@ -16,9 +16,9 @@ int classes_held[15] = {0};
 
 int main()
 {
-    LoadData(); // Load previous data from file
+    LoadData();
 
-    std::cout << "******************** WELCOME ********************\n\n";
+    std::cout << "************************* WELCOME *************************\n\n";
 
     Adding_values();
 
@@ -34,19 +34,6 @@ int main()
 
     return 0;
 }
-
-// int Input()
-// {
-//     int choice;
-//     std::cout << "What would you like to do?"
-//               << "Show stats(1)\n"
-//               << "Add values(2)\n"
-//               << "Customize values(3)\n"
-//               << "What would it be?: ";
-
-//     std::cin >> choice;
-//     return choice;
-// } // work in progress
 
 void Adding_values()
 {
