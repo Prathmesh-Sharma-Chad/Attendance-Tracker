@@ -3,8 +3,6 @@
 #include <cctype>
 #include <fstream>
 
-// This is a temporary file and will be delete later. i made this file as a backup because my ssd got corrupted. these features will be integrated fully in the future. i m open to suggestions. Thank You
-
 
 // Functions intialization
 int Input();
@@ -125,7 +123,10 @@ bool is_digit(std::string& str)
 void Customize()
 {
     int respo;
-    std::cout << "What Would You Like To Do?\n" << "Customize Subjects (1)\n" << "Customize attendance (2)\n" << "Your Choice: ";
+    std::cout << "What Would You Like To Do?\n"
+        << "Customize Subjects (1)\n" 
+        << "Customize attendance (2)\n" 
+        << "Your Choice: ";
     std::cin >> respo;
 
     // if the user wantes to customize subject this will trigger
@@ -139,7 +140,11 @@ void Customize()
             std::cout << Subjects[i] << std::endl;
         }
 
-        std::cout << "What Would You Like To Do?\n" << "Add Subject (1)\n" << "Delete Subject (2)\n" << "What Would It Be?: ";
+        std::cout << "What Would You Like To Do?\n"
+            << "Add Subject (1)\n"
+            << "Delete Subject (2)\n" 
+            << "What Would It Be?: ";
+
         while (true) // error handling loop
         {
             std::cin >> action;
@@ -189,11 +194,10 @@ void Customize()
 
             }
         }
+        // triggers when user wants to delete a subject from the list
         else if(action == 2)
         {
-            int subject_action; // for selecting the subject
-            int subject_choice; // for action on the subject
-            int add_remove_action; // for action after user chooses either they wanna add or remove atendance
+            int subject_choice; 
 
             std::cout << "Subjects List:\n";
 
@@ -202,19 +206,31 @@ void Customize()
                 std::cout << i+1 << ". " << Subjects[i] << total_attendance[i] << classes_held[i] << std::endl;
             }
 
-            std::cout << "Which Subjects Attendace Would You Like To Customize? Enter Their Serial Number From The List: ";
-            std::cin >> subject_choice;
+            std::cout << "Which Subject Would You Like To Delete? Enter The Serial Number Corresponding The Subject: ";
 
-            std::cout << "Would You Like To Add (1) OR Remove (2) Attendance From The Subject?";
-            std::cin >> subject_action;
+            while (true)
+            {
+                std::cin >> subject_choice;
 
-            std::cout << "Add Your Attendance? (1) OR Add Classes Held (2): ";
-            std::cin >> add_remove_action;
-
-            std::cout << "Remove Your Attendance (1) OR Remove Classes Held (1): ";
-            std::cin >> add_remove_action;
+                if (subject_choice < n && subject_choice > 0) {
 
 
+
+                    break;
+                }
+                else
+                {
+                    std::cout << "Invalid Input, Try Again: ";
+
+                    continue;
+                }
+            }
+
+
+
+        }
+        else {
+            std::cout << "Invalid Input";
         }
 
 
